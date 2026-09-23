@@ -1,16 +1,7 @@
 {
-	"compilerOptions": {
-		"module": "es6",
-		"target": "es5",
-		"jsx": "react-jsx",
-		"allowJs": true,
-		"allowSyntheticDefaultImports": true,
-		"moduleResolution": "node",
-		"strict": true,
-		"noEmit": true,
-		"baseUrl": "./src",
-		"paths": {
-			"images": ["./images/*"]
-		}
-	}
+  "files": [],
+  "references": [
+    { "path": "./tsconfig.app.json" },
+    { "path": "./tsconfig.node.json" }
+  ]
 }
