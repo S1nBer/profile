@@ -12,14 +12,8 @@ export function CustomCursor() {
     const el = ref.current;
     if (!el) return;
 
-    let x = window.innerWidth / 2;
-    let y = window.innerHeight / 2;
-    let tx = x;
-    let ty = y;
-
     const onMove = (e: MouseEvent) => {
-      tx = e.clientX;
-      ty = e.clientY;
+      el.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0) translate(-50%, -50%)`;
       if (!visible) setVisible(true);
     };
 
@@ -31,21 +25,11 @@ export function CustomCursor() {
     };
     const onOut = () => setHovering(false);
 
-    let raf = 0;
-    const tick = () => {
-      x += (tx - x) * 0.2;
-      y += (ty - y) * 0.2;
-      el.style.transform = `translate3d(${x}px, ${y}px, 0) translate(-50%, -50%)`;
-      raf = requestAnimationFrame(tick);
-    };
-
     window.addEventListener('mousemove', onMove);
     window.addEventListener('mouseover', onOver);
     window.addEventListener('mouseout', onOut);
-    raf = requestAnimationFrame(tick);
 
     return () => {
-      cancelAnimationFrame(raf);
       window.removeEventListener('mousemove', onMove);
       window.removeEventListener('mouseover', onOver);
       window.removeEventListener('mouseout', onOut);
@@ -56,7 +40,8 @@ export function CustomCursor() {
     <div
       ref={ref}
       className={cn(
-        'pointer-events-none fixed top-0 left-0 z-[9999] rounded-full mix-blend-difference transition-all duration-200',
+        'pointer-events-none fixed top-0 left-0 z-[9999] rounded-full mix-blend-difference',
+        'transition-[width,height,opacity] duration-200 ease-out',
         visible ? 'opacity-100' : 'opacity-0',
         hovering ? 'w-12 h-12 bg-accent' : 'w-4 h-4 bg-text',
       )}
