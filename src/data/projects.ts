@@ -3,16 +3,20 @@ export type ProjectStatus = 'done' | 'wip';
 export type Project = {
   slug: string;
   title: string;
+  /** Короткое описание — 1-2 строки */
   description: string;
+  /** Что решает / чем интересен — для раскрытия */
   highlights?: string[];
   stack: string[];
   demo?: string;
   github?: string;
   status: ProjectStatus;
-  // Флагманский проект
+  /** Флагманский проект — показываем крупнее */
   featured?: boolean;
-  // Акцентный цвет для карточки
-  accent?: string;
+  /** Акцентный цвет для карточки (hex) */
+  accent: string;
+  /** Путь к превью-скриншоту */
+  preview: string;
 };
 
 export const projects: Project[] = [
@@ -22,7 +26,7 @@ export const projects: Project[] = [
     description:
       'Конструктор резюме с предпросмотром в реальном времени и экспортом в PDF. Несколько шаблонов, drag-and-drop секций, автосохранение.',
     highlights: [
-      'Live-preview: изменения в форме моментально отражаются в макете резюме',
+      'Live-preview: изменения в форме моментально отражаются в макете',
       'Экспорт в PDF через html2canvas-pro + jsPDF — без сервера',
       'Drag-and-drop сортировка секций на @dnd-kit',
       'Zustand для стейта, чистые переиспользуемые компоненты',
@@ -42,6 +46,7 @@ export const projects: Project[] = [
     status: 'done',
     featured: true,
     accent: '#6366F1',
+    preview: '/projects/resume-builder.jpg',
   },
   {
     slug: 'admin-panel',
@@ -51,8 +56,7 @@ export const projects: Project[] = [
     highlights: [
       'Redux Toolkit + Redux-Saga — асинхронные сайд-эффекты',
       'Axios с интерсепторами: обновление токена, обработка 401',
-      'Ant Design 6 как UI-база, CSS Modules для кастомных стилей',
-      'Защищённые роуты через connected-react-router',
+      'Ant Design как UI-база, CSS Modules для кастомных стилей',
     ],
     stack: [
       'React 19',
@@ -68,6 +72,7 @@ export const projects: Project[] = [
     github: 'https://github.com/S1nBer/admin-panel',
     status: 'done',
     accent: '#22D3EE',
+    preview: '/projects/admin-panel.jpg',
   },
   {
     slug: 'keycloak-login',
@@ -75,13 +80,14 @@ export const projects: Project[] = [
     description: 'SPA с аутентификацией через Keycloak по Authorization Code Flow + PKCE.',
     highlights: [
       'Authorization Code Flow + PKCE — безопасная схема без client secret',
-      'keycloak-js + React Router: защищённые роуты и автоматический refresh',
+      'keycloak-js + React Router: защищённые роуты, refresh токенов',
       'Показывает понимание OAuth 2.0 / OpenID Connect изнутри',
     ],
     stack: ['React 19', 'TypeScript', 'Vite', 'keycloak-js', 'React Router'],
     github: 'https://github.com/S1nBer/keycloak-login',
     status: 'done',
     accent: '#A855F7',
+    preview: '/projects/keycloak-login.jpg',
   },
   {
     slug: 'horizon',
@@ -97,5 +103,6 @@ export const projects: Project[] = [
     github: 'https://github.com/S1nBer/horizon',
     status: 'wip',
     accent: '#34D399',
+    preview: '/projects/horizon.jpg',
   },
 ];
