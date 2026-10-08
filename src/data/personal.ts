@@ -59,5 +59,5 @@ export const personal = {
     },
   },
 
-  cvUrl: '/cv.pdf',
+  cvUrl: '/Gerasimenko A.O. - Frontend Developer.pdf',
 } as const;
