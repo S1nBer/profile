@@ -1,6 +1,10 @@
+import { lazy, Suspense } from 'react';
 import { motion } from 'motion/react';
-import { AuroraShader } from '../../three/AuroraShader';
 import { personal } from '../../data/personal';
+
+const AuroraShader = lazy(() =>
+  import('../../three/AuroraShader').then((m) => ({ default: m.AuroraShader })),
+);
 
 const container = {
   hidden: {},
@@ -24,7 +28,10 @@ export function Hero() {
       id="hero"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      <AuroraShader />
+      {/* Шейдер грузится лениво — отдельным чанком */}
+      <Suspense fallback={<div className="absolute inset-0 -z-10 bg-bg" />}>
+        <AuroraShader />
+      </Suspense>
 
       {/* Затемнение поверх шейдера — чтобы текст читался */}
       <div className="absolute inset-0 -z-10 bg-gradient-to-b from-bg/60 via-bg/40 to-bg" />
@@ -51,14 +58,14 @@ export function Hero() {
 
         <motion.p
           variants={item}
-          className="mt-6 text-lg md:text-xl text-text-dim max-w-2xl mx-auto"
+          className="mt-6 text-lg md:text-xl text-text/90 max-w-2xl mx-auto"
         >
           {personal.role} · {personal.years} лет опыта · {personal.location}
         </motion.p>
 
         <motion.p
           variants={item}
-          className="mt-6 text-base md:text-lg text-text-dim/80 max-w-xl mx-auto"
+          className="mt-6 text-base md:text-lg text-text-dim max-w-xl mx-auto"
         >
           {personal.pitch}
         </motion.p>

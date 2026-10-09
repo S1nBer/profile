@@ -1,14 +1,29 @@
+import { lazy, Suspense } from 'react';
 import { useLenis } from '../hooks/useLenis';
 import { Header } from '../components/layout/Header';
 import { Footer } from '../components/layout/Footer';
 import { CustomCursor } from '../components/layout/CustomCursor';
 import { Hero } from '../components/sections/Hero';
-import { About } from '../components/sections/About';
-import { Skills } from '../components/sections/Skills';
-import { Experience } from '../components/sections/Experience';
-import { Projects } from '../components/sections/Projects';
-import { Learning } from '../components/sections/Learning';
-import { Contact } from '../components/sections/Contact';
+
+// Lazy — грузятся в отдельных чанках
+const About = lazy(() =>
+  import('../components/sections/About').then((m) => ({ default: m.About })),
+);
+const Skills = lazy(() =>
+  import('../components/sections/Skills').then((m) => ({ default: m.Skills })),
+);
+const Experience = lazy(() =>
+  import('../components/sections/Experience').then((m) => ({ default: m.Experience })),
+);
+const Projects = lazy(() =>
+  import('../components/sections/Projects').then((m) => ({ default: m.Projects })),
+);
+const Learning = lazy(() =>
+  import('../components/sections/Learning').then((m) => ({ default: m.Learning })),
+);
+const Contact = lazy(() =>
+  import('../components/sections/Contact').then((m) => ({ default: m.Contact })),
+);
 
 function App() {
   useLenis();
@@ -19,12 +34,14 @@ function App() {
       <Header />
       <main>
         <Hero />
-        <About />
-        <Skills />
-        <Experience />
-        <Projects />
-        <Learning />
-        <Contact />
+        <Suspense fallback={<div className="min-h-screen" />}>
+          <About />
+          <Skills />
+          <Experience />
+          <Projects />
+          <Learning />
+          <Contact />
+        </Suspense>
       </main>
       <Footer />
     </>

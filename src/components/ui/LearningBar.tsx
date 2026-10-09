@@ -6,10 +6,9 @@ type LearningBarProps = {
   index: number;
 };
 
-const ACCENT = '#34D399'; // emerald
+const ACCENT = '#34D399';
 
 export function LearningBar({ topic, index }: LearningBarProps) {
-  // 4 уровня → 4 сегмента
   const totalSegments = 4;
   const filled = topic.level;
 
@@ -23,13 +22,18 @@ export function LearningBar({ topic, index }: LearningBarProps) {
         ease: [0.16, 1, 0.3, 1],
         delay: index * 0.08,
       }}
-      className="grid grid-cols-[140px_1fr_auto] md:grid-cols-[180px_1fr_auto] gap-4 md:gap-6 items-center"
+      className="flex flex-col gap-2 sm:grid sm:grid-cols-[140px_1fr_auto] sm:gap-4 md:gap-6 sm:items-center"
     >
-      {/* Название */}
-      <span className="font-mono text-sm md:text-base text-text">{topic.name}</span>
+      {/* Верхняя строка: название + статус (на мобилке) */}
+      <div className="flex items-center justify-between sm:contents">
+        <span className="font-mono text-sm md:text-base text-text">{topic.name}</span>
+        <span className="text-xs md:text-sm font-mono text-text-muted whitespace-nowrap sm:order-3">
+          {topic.status}
+        </span>
+      </div>
 
-      {/* Сегменты */}
-      <div className="flex gap-1.5">
+      {/* Сегменты — на мобилке во всю ширину под названием */}
+      <div className="flex gap-1.5 sm:order-2">
         {Array.from({ length: totalSegments }).map((_, i) => (
           <motion.div
             key={i}
@@ -49,11 +53,6 @@ export function LearningBar({ topic, index }: LearningBarProps) {
           />
         ))}
       </div>
-
-      {/* Статус */}
-      <span className="text-xs md:text-sm font-mono text-text-muted whitespace-nowrap">
-        {topic.status}
-      </span>
     </motion.div>
   );
 }

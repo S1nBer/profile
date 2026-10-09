@@ -7,32 +7,41 @@ export function CustomCursor() {
   const [hovering, setHovering] = useState(false);
 
   useEffect(() => {
-    if (window.matchMedia('(hover: none)').matches) return;
-
     const el = ref.current;
     if (!el) return;
 
-    const onMove = (e: MouseEvent) => {
+    const onMove = (e: PointerEvent) => {
+      // Только "настоящие" мыши/трекпады. Touch и pen игнорируем
+      if (e.pointerType === 'touch') return;
       el.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0) translate(-50%, -50%)`;
       if (!visible) setVisible(true);
     };
 
-    const onOver = (e: MouseEvent) => {
+    const onOver = (e: PointerEvent) => {
+      if (e.pointerType === 'touch') return;
       const target = e.target as HTMLElement;
       if (target.closest('a, button, [role="button"], [data-cursor-hover]')) {
         setHovering(true);
       }
     };
-    const onOut = () => setHovering(false);
+    const onOut = (e: PointerEvent) => {
+      if (e.pointerType === 'touch') return;
+      setHovering(false);
+    };
 
-    window.addEventListener('mousemove', onMove);
-    window.addEventListener('mouseover', onOver);
-    window.addEventListener('mouseout', onOut);
+    // Скрываем курсор, когда мышь уходит за пределы окна
+    const onLeave = () => setVisible(false);
+
+    window.addEventListener('pointermove', onMove);
+    window.addEventListener('pointerover', onOver);
+    window.addEventListener('pointerout', onOut);
+    document.addEventListener('mouseleave', onLeave);
 
     return () => {
-      window.removeEventListener('mousemove', onMove);
-      window.removeEventListener('mouseover', onOver);
-      window.removeEventListener('mouseout', onOut);
+      window.removeEventListener('pointermove', onMove);
+      window.removeEventListener('pointerover', onOver);
+      window.removeEventListener('pointerout', onOut);
+      document.removeEventListener('mouseleave', onLeave);
     };
   }, [visible]);
 
