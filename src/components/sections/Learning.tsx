@@ -27,7 +27,7 @@ export function Learning() {
             <p className="text-text-dim leading-relaxed text-base md:text-lg mb-6">
               {learning.intro}
             </p>
-            <p className="text-text-muted text-sm leading-relaxed">{learning.note}</p>
+            <p className="text-text-dim text-sm leading-relaxed">{learning.note}</p>
           </motion.div>
 
           {/* Бары */}

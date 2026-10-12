@@ -51,10 +51,10 @@ export function ExperienceCard({ item, index, accent }: ExperienceCardProps) {
             )}
           </h3>
           <p className="text-text-dim mt-1">
-            {item.role} · <span className="text-text-muted">{item.location}</span>
+            {item.role} · <span className="text-text-dim">{item.location}</span>
           </p>
         </div>
-        <p className="font-mono text-sm text-text-muted whitespace-nowrap">{item.period}</p>
+        <p className="font-mono text-sm text-text-dim whitespace-nowrap">{item.period}</p>
       </div>
 
       {/* Контекст */}

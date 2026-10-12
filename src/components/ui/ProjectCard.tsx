@@ -61,7 +61,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                 target="_blank"
                 rel="noreferrer"
                 aria-label="GitHub"
-                className="text-text-muted hover:text-text transition-colors"
+                className="text-text-dim hover:text-text transition-colors"
               >
                 <GithubIcon />
               </a>
@@ -72,7 +72,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Demo"
-                className="text-text-muted hover:text-text transition-colors"
+                className="text-text-dim hover:text-text transition-colors"
               >
                 <ArrowIcon />
               </a>
@@ -88,7 +88,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
             <Tag key={tech}>{tech}</Tag>
           ))}
           {project.stack.length > 5 && (
-            <span className="text-xs text-text-muted font-mono self-center">
+            <span className="text-xs text-text-dim font-mono self-center">
               +{project.stack.length - 5}
             </span>
           )}

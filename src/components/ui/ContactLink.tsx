@@ -24,8 +24,8 @@ export function ContactLink({ href, label, value, icon, external = true }: Conta
       )}
     >
       <div className="flex items-center justify-between">
-        <span className="text-text-muted group-hover:text-accent transition-colors">{icon}</span>
-        <span className="text-text-muted group-hover:text-text transition-colors">
+        <span className="text-text-dim group-hover:text-accent transition-colors">{icon}</span>
+        <span className="text-text-dim group-hover:text-text transition-colors">
           <svg
             width="14"
             height="14"
@@ -42,7 +42,7 @@ export function ContactLink({ href, label, value, icon, external = true }: Conta
         </span>
       </div>
       <div>
-        <p className="font-mono text-[10px] uppercase tracking-widest text-text-muted mb-1">
+        <p className="font-mono text-[10px] uppercase tracking-widest text-text-dim mb-1">
           {label}
         </p>
         <p className="text-text text-sm md:text-base truncate">{value}</p>

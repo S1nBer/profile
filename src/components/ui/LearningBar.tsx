@@ -27,7 +27,7 @@ export function LearningBar({ topic, index }: LearningBarProps) {
       {/* Верхняя строка: название + статус (на мобилке) */}
       <div className="flex items-center justify-between sm:contents">
         <span className="font-mono text-sm md:text-base text-text">{topic.name}</span>
-        <span className="text-xs md:text-sm font-mono text-text-muted whitespace-nowrap sm:order-3">
+        <span className="text-xs md:text-sm font-mono text-text-dim whitespace-nowrap sm:order-3">
           {topic.status}
         </span>
       </div>

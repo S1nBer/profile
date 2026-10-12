@@ -97,7 +97,7 @@ export function Hero() {
         transition={{ delay: 1.6, duration: 1 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
       >
-        <span className="text-xs text-text-muted font-mono tracking-wider">скролл</span>
+        <span className="text-xs text-text-dim font-mono tracking-wider">скролл</span>
         <motion.div
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}

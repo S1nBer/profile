@@ -63,7 +63,7 @@ export function About() {
       >
         {personal.facts.map((fact) => (
           <div key={fact.label}>
-            <p className="font-mono text-xs uppercase tracking-widest text-text-muted mb-2">
+            <p className="font-mono text-xs uppercase tracking-widest text-text-dim mb-2">
               {fact.label}
             </p>
             <p className="font-display text-lg text-text">{fact.value}</p>
