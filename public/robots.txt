@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://s1nber.github.io/sitemap.xml
