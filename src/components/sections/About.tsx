@@ -31,7 +31,7 @@ export function About() {
           transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
           className="mx-auto lg:mx-0 lg:sticky lg:top-32"
         >
-          <Avatar src="/avatar.jpg" alt={personal.name} size={320} />
+          <Avatar src={`${import.meta.env.BASE_URL}avatar.jpg`} alt={personal.name} size={320} />
         </motion.div>
 
         {/* Текст */}

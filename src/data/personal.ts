@@ -59,5 +59,5 @@ export const personal = {
     },
   },
 
-  cvUrl: '/Gerasimenko A.O. - Frontend Developer.pdf',
+  cvUrl: `${import.meta.env.BASE_URL}Gerasimenko A.O. - Frontend Developer.pdf`,
 } as const;

@@ -46,7 +46,7 @@ export const projects: Project[] = [
     status: 'done',
     featured: true,
     accent: '#6366F1',
-    preview: '/projects/resume-builder.jpg',
+    preview: `${import.meta.env.BASE_URL}projects/resume-builder.jpg`,
   },
   {
     slug: 'admin-panel',
@@ -72,7 +72,7 @@ export const projects: Project[] = [
     github: 'https://github.com/S1nBer/admin-panel',
     status: 'done',
     accent: '#22D3EE',
-    preview: '/projects/admin-panel.jpg',
+    preview: `${import.meta.env.BASE_URL}/projects/admin-panel.jpg`,
   },
   {
     slug: 'keycloak-login',
@@ -87,7 +87,7 @@ export const projects: Project[] = [
     github: 'https://github.com/S1nBer/keycloak-login',
     status: 'done',
     accent: '#A855F7',
-    preview: '/projects/keycloak-login.jpg',
+    preview: `${import.meta.env.BASE_URL}projects/keycloak-login.jpg`,
   },
   {
     slug: 'horizon',
@@ -103,6 +103,6 @@ export const projects: Project[] = [
     github: 'https://github.com/S1nBer/horizon',
     status: 'wip',
     accent: '#34D399',
-    preview: '/projects/horizon.jpg',
+    preview: `${import.meta.env.BASE_URL}projects/horizon.jpg`,
   },
 ];
